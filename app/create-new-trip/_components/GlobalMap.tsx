@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
-//@ts-ignore
+// @ts-expect-error: Leaflet types mismatch, safe to ignore here
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useTripDetails } from "@/app/provider";
 
