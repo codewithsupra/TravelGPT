@@ -6,7 +6,7 @@ import { auth } from '@clerk/nextjs/server'
 
 const openai = new OpenAI({
   baseURL: 'https://openrouter.ai/api/v1',
-  apiKey:process.env.API_KEY,
+  apiKey:process.env.AI_KEY,
   
 });
 const PROMPT=`You are an AI Trip Planner Agent. Your goal is to help the user plan a trip by **asking one relevant trip-related question at a time**.

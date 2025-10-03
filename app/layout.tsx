@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
-// @ts-expect-error: Next.js types not available for this import yet
 import "./global.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
