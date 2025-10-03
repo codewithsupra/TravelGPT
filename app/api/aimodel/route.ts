@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from 'openai';
-import { aj } from "../arcjet/route";
+import { aj } from "@/lib/arcjet";
 import { currentUser } from "@clerk/nextjs/server";
 import { auth } from '@clerk/nextjs/server'
 
 const openai = new OpenAI({
   baseURL: 'https://openrouter.ai/api/v1',
-  apiKey:process.env.AI_KEY,
+  apiKey:process.env.API_KEY,
   
 });
 const PROMPT=`You are an AI Trip Planner Agent. Your goal is to help the user plan a trip by **asking one relevant trip-related question at a time**.
@@ -139,6 +139,7 @@ export async function POST(req:NextRequest){
     const hasPremiumAccess = has({ plan: 'member' })
     console.log("Is member",hasPremiumAccess);
      const decision = await aj.protect(req, { userId:user.primaryEmailAddress.emailAddress??'', requested:isFinal?5:0 });
+     console.log(decision)
      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
      //@ts-ignore
      if(decision?.reason?.remaining===0 && !hasPremiumAccess){
